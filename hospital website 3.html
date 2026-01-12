@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H.S. Hospital - Moradabad</title>
+  <meta name="description" content="H.S. Hospital in Moradabad offers comprehensive healthcare with modern facilities. Book appointments online." />
+  <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+      --primary-color: #2c7a7b; /* teal */
+      --secondary-color: #085E7D; /* dark teal */
+      --accent-color: #E6FFFA; /* very light teal */
+      --text-color: #333;
+      --heading-color: #0d3b66;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background: #fafafa;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Header / Navigation */
+    header {
+      width: 100%;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1rem;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    .nav-links {
+      display: none;
+    }
+    .nav-links ul {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links ul li a {
+      padding: 0.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+    .nav-links ul li a:hover {
+      color: var(--primary-color);
+    }
+    /* Mobile menu active */
+    .nav-links.active {
+      display: block;
+    }
+    .nav-links.active ul {
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+    .nav-links.active ul li {
+      margin: 0.5rem 0;
+    }
+    /* Hamburger icon */
+    .nav-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--primary-color);
+    }
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #085E7D 0%, #2c7a7b 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    #hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    #hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      background: var(--secondary-color);
+      color: white;
+      border-radius: 25px;
+      border: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-buttons a:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+    }
+    /* About Section */
+    #about {
+      padding: 3rem 0;
+      background: white;
+    }
+    #about .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    #about .about-text {
+      flex: 1 1 300px;
+    }
+    #about .about-text h2 {
+      color: var(--heading-color);
+      margin-bottom: 1rem;
+    }
+    #about .about-text p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+    /* Services Section */
+    #services {
+      padding: 3rem 0;
+      background: var(--accent-color);
+      text-align: center;
+    }
+    #services h2 {
+      color: var(--heading-color);
+      margin-bottom: 2rem;
+    }
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem 1.5rem;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .service-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+    }
+    /* Doctors Section */
+    #doctors {
+      padding: 3rem 0;
+      background: white;
+      text-align: center;
+    }
+    #doctors h2 {
+      color: var(--heading-color);
+      margin-bottom: 2rem;
+    }
+    .doctors-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .doctor-card {
+      background: var(--accent-color);
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 220px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .doctor-card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+    .doctor-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    /* Ayushman Section */
+    #ayushman {
+      padding: 3rem 0;
+      background: #B2DFDB; /* light teal */
+      text-align: center;
+    }
+    #ayushman h2 {
+      color: var(--heading-color);
+      margin-bottom: 1.5rem;
+    }
+    #ayushman p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    #ayushman ul {
+      list-style: disc inside;
+      text-align: left;
+      display: inline-block;
+    }
+    #ayushman ul li {
+      margin: 0.5rem 0;
+    }
+    /* OPD/IPD Section */
+    #opdip {
+      padding: 3rem 0;
+      background: white;
+    }
+    #opdip h2 {
+      color: var(--heading-color);
+      margin-bottom: 2rem;
+    }
+    .opdip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .opdip-box {
+      background: var(--accent-color);
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .opdip-box h3 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    .opdip-flow {
+      margin-top: 1rem;
+    }
+    .opdip-flow li {
+      margin: 0.5rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .opdip-flow li::before {
+      content: "►";
+      position: absolute;
+      left: 0;
+      color: var(--secondary-color);
+    }
+    .opdip-box p {
+      font-size: 0.9rem;
+    }
+    /* Appointment Form */
+    #appointment {
+      padding: 3rem 0;
+      background: var(--accent-color);
+    }
+    #appointment h2 {
+      text-align: center;
+      color: var(--heading-color);
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group input[type="radio"] {
+      width: auto;
+    }
+    #appointment form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #appointment .submit-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin-top: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #appointment .submit-btn:hover {
+      background: var(--secondary-color);
+    }
+    /* Contact Section */
+    #contact {
+      padding: 3rem 0;
+      background: white;
+    }
+    #contact h2 {
+      text-align: center;
+      color: var(--heading-color);
+      margin-bottom: 1.5rem;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .contact-item {
+      flex: 1 1 250px;
+      font-size: 0.95rem;
+    }
+    .contact-item h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+    .contact-item a {
+      color: var(--text-color);
+      word-break: break-all;
+    }
+    .map-container {
+      width: 100%;
+      height: 300px;
+      margin-top: 1rem;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: var(--secondary-color);
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: block;
+      }
+      .nav-toggle {
+        display: none;
+      }
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="nav-brand">H.S. Hospital</div>
+      <button class="nav-toggle" aria-label="Toggle Navigation">&#9776;</button>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#ayushman">Ayushman Card</a></li>
+          <li><a href="#opdip">OPD/IPD</a></li>
+          <li><a href="#appointment">Appointment</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <section id="hero">
+    <div class="container">
+      <h1 class="reveal">Welcome to H.S. Hospital</h1>
+      <p class="reveal">Compassionate, comprehensive healthcare for Moradabad. We ensure quality medical care for all families.</p>
+      <div class="hero-buttons reveal">
+        <a href="#appointment">Book Appointment</a>
+        <a href="tel:+919756763680">Call Us: +91 97567 63680</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container reveal">
+    <h2>About H.S. Hospital</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>H.S. Hospital is a leading healthcare institution located at Gagan Tiraha, Chandausi Road in Moradabad, committed to providing high-quality medical services with a patient-centric approach. Our mission is to deliver compassionate care using modern technology and upholding the highest standards of trust and accessibility for the community.</p>
+        <p><strong>Founder Message:</strong> Dr. Hasan Ali (BUMS), our founder, believes in treating patients like family. His vision is to make healthcare affordable and respectful for all. At H.S. Hospital, we strive to create a welcoming environment where every patient feels safe and cared for.</p>
+        <p>We offer a full range of healthcare services including general medicine, specialized care, diagnostics, emergency services, and more. Our friendly staff and experienced medical team work tirelessly to ensure each patient receives the attention and treatment they deserve.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container reveal">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>General OPD</h3>
+          <p>Consult with our experienced doctors for routine health checkups and general treatments.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Emergency Care</h3>
+          <p>24/7 emergency services with dedicated medical team to handle urgent health situations.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Mother & Child Care</h3>
+          <p>Expert obstetric and pediatric care for mothers and children, ensuring healthy families.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Diagnostics Lab</h3>
+          <p>State-of-the-art lab facilities for accurate and timely diagnostic tests and reports.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Pharmacy</h3>
+          <p>Well-stocked in-house pharmacy to provide all necessary medications quickly and reliably.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Ayushman Card</h3>
+          <p><strong>Cashless Treatment:</strong> We accept Ayushman Bharat health cards for eligible patients, offering free and cashless treatment benefits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctors">
+    <div class="container reveal">
+      <h2>Our Doctors</h2>
+      <div class="doctors-grid">
+        <div class="doctor-card reveal">
+          <h4>Dr. Aftab (Pediatrics)</h4>
+          <p>Specialty: Pediatrics</p>
+          <p>Qualification: MBBS, MD</p>
+        </div>
+        <div class="doctor-card reveal">
+          <h4>Dr. Ikrar (Surgery)</h4>
+          <p>Specialty: Surgery</p>
+          <p>Qualification: MBBS, MS</p>
+        </div>
+        <div class="doctor-card reveal">
+          <h4>Dr. Swati Jain</h4>
+          <p>Specialty: Gynaecology</p>
+          <p>Qualification: MBBS, MS</p>
+        </div>
+        <div class="doctor-card reveal">
+          <h4>Dr. Prithiba</h4>
+          <p>Specialty: Gynaecology</p>
+          <p>Qualification: MBBS, MS</p>
+        </div>
+        <div class="doctor-card reveal">
+          <h4>Dr. Rakesh (Medicine)</h4>
+          <p>Specialty: Medicine</p>
+          <p>Qualification: MBBS, MD</p>
+        </div>
+        <div class="doctor-card reveal">
+          <h4>Dr. Nasar Alam</h4>
+          <p>Specialty: Medicine</p>
+          <p>Qualification: MBBS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ayushman">
+    <div class="container reveal">
+      <h2>Ayushman Bharat Health Card</h2>
+      <p>At H.S. Hospital, <strong>we welcome Ayushman Card holders</strong>. Eligible patients can avail <strong>free and cashless treatment</strong> under the Ayushman Bharat scheme. Present your Ayushman Health Card at the reception to receive the following benefits:</p>
+      <ul>
+        <li>Up to ₹5,00,000 coverage per family per year</li>
+        <li>No paperwork – cashless and seamless billing</li>
+        <li>All major treatments and surgeries covered</li>
+        <li>No cap on family size or age</li>
+      </ul>
+      <p><strong>Ayushman Card</strong> ensures quality healthcare is accessible to those who need it most.</p>
+    </div>
+  </section>
+
+  <section id="opdip">
+    <div class="container reveal">
+      <h2>OPD and IPD Services</h2>
+      <div class="opdip-grid">
+        <div class="opdip-box reveal">
+          <h3>Outpatient Department (OPD)</h3>
+          <p><strong>Timings:</strong> 9:00 AM – 1:00 PM, 4:00 PM – 7:00 PM (All Days)</p>
+          <ul class="opdip-flow">
+            <li>Contact Reception or WhatsApp to book your slot.</li>
+            <li>Arrive at scheduled time for consultation.</li>
+            <li>Complete prescription and lab tests as advised.</li>
+            <li>Pay at billing counter (cashless for Ayushman Card holders).</li>
+          </ul>
+        </div>
+        <div class="opdip-box reveal">
+          <h3>Inpatient Department (IPD)</h3>
+          <p><strong>Availability:</strong> 24/7 emergency and admission services.</p>
+          <ul class="opdip-flow">
+            <li>Emergency admissions available round the clock.</li>
+            <li>Bring identity & address proof for registration.</li>
+            <li>Private and general ward accommodation.</li>
+            <li>Ayushman Card patients get cashless hospitalization.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appointment">
+    <div class="container">
+      <h2>Book an Appointment</h2>
+      <form id="appointment-form" class="reveal">
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile *</label>
+          <input type="tel" id="mobile" pattern="\\d{10}" maxlength="10" placeholder="10-digit mobile" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age *</label>
+          <input type="number" id="age" min="0" max="120" required>
+        </div>
+        <div class="form-group">
+          <label>Gender *</label>
+          <input type="radio" id="gender-male" name="gender" value="Male" required> <label for="gender-male">Male</label>
+          <input type="radio" id="gender-female" name="gender" value="Female" required> <label for="gender-female">Female</label>
+          <input type="radio" id="gender-other" name="gender" value="Other" required> <label for="gender-other">Other</label>
+        </div>
+        <div class="form-group">
+          <label for="department">Department *</label>
+          <select id="department" required>
+            <option value="">Select</option>
+            <option>General Medicine</option>
+            <option>Pediatrics</option>
+            <option>Gynaecology</option>
+            <option>Surgery</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="doctor">Doctor *</label>
+          <select id="doctor" required>
+            <option value="">Select</option>
+            <option>Dr. Aftab (Pediatrics)</option>
+            <option>Dr. Ikrar (Surgery)</option>
+            <option>Dr. Swati Jain (Gynaecology)</option>
+            <option>Dr. Prithiba (Gynaecology)</option>
+            <option>Dr. Rakesh (Medicine)</option>
+            <option>Dr. Nasar Alam (Medicine)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Date *</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Time *</label>
+          <input type="time" id="time" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+        <p id="form-message" style="margin-top:10px; color: green; display:none;">Your appointment request has been submitted.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <h4>Address</h4>
+          <p>Gagan Tiraha, Chandausi Road,<br>Moradabad, Uttar Pradesh – 244001</p>
+        </div>
+        <div class="contact-item">
+          <h4>Phone</h4>
+          <p><a href="tel:+919756763680">+91 97567 63680</a><br><a href="tel:+919058044068">+91 90580 44068</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>Email</h4>
+          <p><a href="mailto:info@hshospital.com">info@hshospital.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/919756763680" target="_blank">Chat on WhatsApp</a></p>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=H.S.%20Hospital%20Moradabad&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 H.S. Hospital. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggleButton = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggleButton.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Appointment form submission
+    const appointmentForm = document.getElementById('appointment-form');
+    const formMessage = document.getElementById('form-message');
+    appointmentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simple validation
+      if(!appointmentForm.checkValidity()) {
+        appointmentForm.reportValidity();
+        return;
+      }
+      // Collect form data
+      const name = document.getElementById('name').value;
+      const mobile = document.getElementById('mobile').value;
+      const age = document.getElementById('age').value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const department = document.getElementById('department').value;
+      const doctor = document.getElementById('doctor').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const message = document.getElementById('message').value;
+      // Construct WhatsApp message
+      let text = `Name: ${name}%0A` +
+                 `Mobile: ${mobile}%0A` +
+                 `Age: ${age}%0A` +
+                 `Gender: ${gender}%0A` +
+                 `Department: ${department}%0A` +
+                 `Doctor: ${doctor}%0A` +
+                 `Date: ${date}%0A` +
+                 `Time: ${time}%0A` +
+                 `Message: ${message}`;
+      // Open WhatsApp chat
+      const phone = '919756763680';
+      window.open('https://api.whatsapp.com/send?phone=' + phone + '&text=' + text, '_blank');
+      // Show success message
+      formMessage.style.display = 'block';
+      // Reset form
+      appointmentForm.reset();
+    });
+
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+        if (elementTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    // Trigger once on load
+    revealOnScroll();
+  </script>
+</body>
+</html>
